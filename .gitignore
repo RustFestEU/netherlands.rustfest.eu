@@ -56,8 +56,7 @@ typings/
 
 # gatsby files
 .cache/
-# public is not ignored because it's deployed to gh-pages using git.
-# public
+public
 
 # Mac files
 .DS_Store
