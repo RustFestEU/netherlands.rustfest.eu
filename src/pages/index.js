@@ -228,7 +228,7 @@ const IndexPage = () => (
       </svg>
       <h1>RustFest Netherlands - Q2 2020</h1>
       <p>
-        The RustFest Netherlands team is working hard behind the scenes on
+        The RustFest Netherlands team are working hard behind the scenes on
         getting everything ready. We hope to tell you more soon so keep an eye
         on the{' '}
         <a href="https://blog.rustfest.eu/" title="The RustFest blog">
