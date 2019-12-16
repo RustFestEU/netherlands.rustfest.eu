@@ -20,9 +20,15 @@ yarn start
 ```
 
 Once you've completed your content changes (see [Content](#content)) run the
- build command to create an optimised build that can be deployed to production. 
+deploy command. This will create an optimised build and push it to the 
+`gh-pages` branch from which it will be served.
 ```shell script
-yarn build
+yarn deploy
+```
+
+Optionally you can use the `-m` option to add a description of what you changed.
+```shell script
+yarn deploy -m "Added John Doe as speaker"
 ```
 
 # Content
