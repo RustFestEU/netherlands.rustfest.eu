@@ -3,7 +3,13 @@
 If you want to add to this website use git to clone it.
 
 ```shell script
-git clone git@github.com:RustFestEU/netherlands.rustfest.eu.git netherlands.rustfest.eu
+git clone --branch master git@github.com:RustFestEU/netherlands.rustfest.eu.git netherlands.rustfest.eu
+```
+
+Or to update your local copy
+```shell script
+git checkout master
+git pull
 ```
 
 [Yarn](https://yarnpkg.com/) is used for dependency management. To install
@@ -29,6 +35,13 @@ yarn deploy
 Optionally you can use the `-m` option to add a description of what you changed.
 ```shell script
 yarn deploy -m "Added John Doe as speaker"
+```
+
+Don't forget to commit and push your changes to the content on the master
+branch so other people can iterate on top of them.
+```shell script
+git commit
+git push
 ```
 
 # Content
