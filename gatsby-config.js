@@ -5,6 +5,10 @@ module.exports = {
     author: `Rust Nederland`,
     siteUrl: 'https://netherlands.rustfest.eu',
   },
+  mapping: {
+    'MarkdownRemark.fields.sessions': `MarkdownRemark`,
+    'MarkdownRemark.fields.speakers': `MarkdownRemark`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -28,6 +32,27 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/content/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `sessions`,
+        path: `${__dirname}/content/sessions`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `speakers`,
+        path: `${__dirname}/content/speakers`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `sponsors`,
+        path: `${__dirname}/content/sponsors`,
       },
     },
     {
