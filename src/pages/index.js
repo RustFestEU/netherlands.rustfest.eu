@@ -5,7 +5,7 @@ import SEO from '../components/Seo';
 
 const IndexPage = () => (
   <Layout isFront={true}>
-    <SEO title={"Home"} />
+    <SEO title={'Home'} />
     <div className="placeholder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
