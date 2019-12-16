@@ -1,7 +1,8 @@
 {
   "name": "rustfesteu-netherlands-2020",
-  "private": true,
   "description": "The 2020 edition in the Netherlands of a Rust Community conference travelling all around Europe.",
+  "private": true,
+  "license": "MIT",
   "version": "0.1.0",
   "dependencies": {
     "gatsby": "^2.16.1",
@@ -25,7 +26,6 @@
     "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   },
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "predeploy": "yarn build",
