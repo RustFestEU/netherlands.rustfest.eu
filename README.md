@@ -126,3 +126,30 @@ This is an example session that'll be awesome.
 `speakers` can be multiple values in Markdown list format or a single value.
 Each value should correspond to the value of the `name` field of one of the
 files in the `/content/speakers` folder.
+
+## Adding teammembers
+
+
+Copy the template below and change values as needed.
+
+```markdown
+---
+name: Jane Doe
+image: /images/team/jane-doe.jpg
+
+website: https://example.com
+twitter: https://twitter.com/janedoe
+linkedin: https://linked.in/u/janedoe
+github: https://github.com/janedoe
+gitlab: https://gitlab.com/janedoe
+behance: https://www.behance.net/janedoe
+medium: https://www.medium.com/@janedoe
+discord: discord://janedoe#1234
+
+---
+Jane Doe has a lot of experience with organising conferences and will be 
+attending RustFest for the third time. This is her first time organising RustFest.
+```
+
+Name, role and image are mandatory (use an anonymous image if the teammember does not 
+want to display one). The other fields will only be output when filled.

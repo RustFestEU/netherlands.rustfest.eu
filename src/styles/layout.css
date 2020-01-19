@@ -8,7 +8,7 @@ html {
 
 body {
     font-family: "Proxima Nova","Helvetica Neue","Helvetica","Arial",sans-serif;
-    background-color: rgba(200, 216, 217, 0.3);
+    /*background-color: rgba(200, 216, 217, 0.3);*/
     color: rgb(10, 20, 30);
     margin: 0;
 }
@@ -26,8 +26,8 @@ body {
     margin-top: 2rem;
 }
 
-p {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    max-width: 600px;
-}
+/*p {*/
+/*    font-size: 1.2rem;*/
+/*    line-height: 1.4;*/
+/*    max-width: 600px;*/
+/*}*/

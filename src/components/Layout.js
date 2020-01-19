@@ -7,25 +7,26 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import Header from "./organisems/Header";
 
 import '../styles/index.css';
 
 const Layout = ({ children, isFront = false }) => {
-  // const data = useStaticQuery(graphql`
-  //     query SiteTitleQuery {
-  //         site {
-  //             siteMetadata {
-  //                 title
-  //             }
-  //         }
-  //     }
-  // `);
+  const data = useStaticQuery(graphql`
+      query SiteTitleQuery {
+          site {
+              siteMetadata {
+                  title
+              }
+          }
+      }
+  `);
 
   return (
     <>
-      {/*<Header isFront={isFront} siteTitle={data.site.siteMetadata.title} />*/}
-      <main className={'container'}>{children}</main>
+      <Header isFront={isFront} siteTitle={data.site.siteMetadata.title} />
+      <main className={'max-w-5xl mx-auto p-4'}>{children}</main>
     </>
   );
 };
