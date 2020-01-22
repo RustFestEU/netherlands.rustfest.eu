@@ -1,7 +1,8 @@
 import React from "react";
+import BaseIcon from "./BaseIcon";
 
 const Gitlab = props => (
-  <svg {...props} width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <BaseIcon width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="logo-no-bg" transform="translate(2.000000, 19.000000)">
       <g id="g10" transform="translate(248.000000, 228.833300) scale(1, -1) translate(-248.000000, -228.833300) translate(0.000000, 0.333300)">
         <g>
@@ -34,7 +35,7 @@ const Gitlab = props => (
         </g>
       </g>
     </g>
-  </svg>
+  </BaseIcon>
 );
 
 export default Gitlab;

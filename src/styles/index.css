@@ -1,8 +1,0 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-@import "./layout.css";
-
-a {
-    @apply text-blue-600 underline;
-}

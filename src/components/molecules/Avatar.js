@@ -1,6 +1,12 @@
 import React from "react";
-import Img from 'gatsby-image';
+import GatsbyImage from 'gatsby-image';
+import styled from "styled-components";
+
+const Img = styled(GatsbyImage)`
+  display: inline-block;
+  border-radius: 100%;
+`;
 
 export default function Avatar(props) {
-  return <Img {...props} className={props.className + ' rounded-full inline-block'} />
+  return <Img {...props} />
 }

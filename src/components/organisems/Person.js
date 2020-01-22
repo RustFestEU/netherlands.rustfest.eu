@@ -1,76 +1,128 @@
-import React, {useEffect, useState} from "react";
-import Avatar from "../molecules/Avatar";
-import {Gitlab, Twitter, GitHub, LinkedIn, Website, Behance, Medium, Discord } from '../atoms/icons';
+import React, {useEffect, useRef, useState} from "react";
+import styled from "styled-components";
+import AvatarBase from "../molecules/Avatar";
+import PersonIcons from "../molecules/PersonIcons";
+
+const Modal = styled.div`
+  position: fixed;
+  top: 0; 
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+`;
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: white;
+  
+  &:focus {
+    outline:0;
+  }
+`;
+
+const PersonWrapper = styled.div`
+  text-align: center;
+  cursor: pointer;
+`;
+
+const ModalAvatar = styled(AvatarBase)`
+  flex: none;
+  width: 10rem;
+  height: 10rem;
+  margin-right: 1rem;
+  align-self: center;
+`;
+
+const PersonAvatar = styled(AvatarBase)`
+  width: 14rem;
+  height: 14rem;
+  border: 4px solid white;
+`;
+
+const PersonName = styled.p`
+  font-size: 1.25rem;
+`;
+
+const BlackIcons = styled(PersonIcons)`
+  color: #1a202c;
+`;
+
+const GrayIcons = styled(PersonIcons)`
+  color: #4a5568;
+`;
+
+const divSrOnly = styled.div`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
 
 export default function Person(props) {
   const [hasJs, enableJs] = useState(false);
   const [visible, setVisible] = useState(false);
   useEffect(() => enableJs(true), [enableJs]);
 
-  const icons = color => {
-    const classes = color + " fill-current  w-5 h-5 inline-block mr-1";
-    return (<>
-      {props.website ?
-        <a href={props.website} title={`View ${props.name}'s website`}>
-          <Website className={classes}/>
-        </a>
-        : null}
-      {props.twitter ?
-        <a href={props.twitter} title={`View ${props.name}'s twitter`}>
-          <Twitter className={classes}/>
-        </a>
-        : null}
-      {props.linkedin ?
-        <a href={props.linkedin} title={`View ${props.name}'s linkedin`}>
-          <LinkedIn className={classes}/>
-        </a>
-        : null}
-      {props.github ?
-        <a href={props.github} title={`View ${props.name}'s github`}>
-          <GitHub className={classes}/>
-        </a>
-        : null}
-      {props.gitlab ?
-        <a href={props.gitlab} title={`View ${props.name}'s gitlab`}>
-          <Gitlab className={classes}/>
-        </a>
-        : null}
-      {props.behance ?
-        <a href={props.behance} title={`View ${props.name}'s behance`}>
-          <Behance className={classes}/>
-        </a>
-        : null}
-      {props.medium ?
-        <a href={props.medium} title={`View ${props.name}'s medium`}>
-          <Medium className={classes}/>
-        </a>
-        : null}
-      {props.discord ?
-        <a href={props.discord} title={`View ${props.name}'s discord`}>
-          <Discord className={classes}/>
-        </a>
-        : null}
-    </>);
-  };
+  const show = () => setVisible(true);
+  const hide = () => setVisible(false);
+
+  // The attribute check ensures that the modal doesn't open for links.
+  const showOnEnter = e => e.keyCode === 13 && e.target.getAttribute('data-modalcontrol') && show();
+  const hideOnEsc = e => e.keyCode === 27 && hide();
+
+  const modalRef = useRef();
+  useEffect(() => {
+    if (visible && modalRef.current) {
+      modalRef.current.focus();
+    }
+  });
+
+  // Show non-pop-over description only for screenreaders.
+  const Desc = hasJs ? divSrOnly : "div";
+
+  const modal = visible ? (
+    <Modal onClick={hide}>
+      <ModalContent
+        ref={modalRef}
+        tabIndex={0}
+        onKeyUp={hideOnEsc}
+        onClick={e => e.stopPropagation()}
+      >
+        <ModalAvatar fluid={props.image.childImageSharp.fluid} alt={props.name} />
+        <div>
+          <PersonName>{props.name}</PersonName>
+          <div dangerouslySetInnerHTML={{__html: props.children}} />
+          {<BlackIcons {...props}/>}
+        </div>
+      </ModalContent>
+    </Modal>
+  ) : null;
 
   return (
     <>
-      <div className={visible ? "flex fixed inset-0 h-screen z-10" : "hidden"} style={{background: 'rgba(0,0,0,0.2)'}} onClick={() => setVisible(false)}>
-        <div onClick={e => e.stopPropagation()} className={"m-auto bg-white max-w-lg p-4 rounded flex flex-row"}>
-          <Avatar fluid={props.image.childImageSharp.fluid} alt={props.name} className={'flex-none w-40 h-40 mr-4 self-center'}/>
-          <div>
-            <div className={"text-xl"}>{props.name}</div>
-            <div dangerouslySetInnerHTML={{__html: props.children}} />
-            {icons("text-black")}
-          </div>
-        </div>
-      </div>
-      <div onClick={() => setVisible(true)} className={"text-center cursor-pointer"}>
-        <Avatar fluid={props.image.childImageSharp.fluid} alt={props.name} className={"w-56 h-56 border-4 border-white"}/>
-        <div className={"text-xl"}>{props.name}</div>
-        <div className={hasJs ? "sr-only" : ""} dangerouslySetInnerHTML={{__html: props.children}} />
-        {icons("text-gray-700")}
-      </div>
+      {modal}
+      <PersonWrapper data-modalcontrol={true} tabIndex={0} onKeyUp={showOnEnter} onClick={show} >
+        <PersonAvatar fluid={props.image.childImageSharp.fluid} alt={props.name} />
+        <PersonName>{props.name}</PersonName>
+        <Desc dangerouslySetInnerHTML={{__html: props.children}} />
+        {<GrayIcons {...props}/>}
+      </PersonWrapper>
     </>
   );
 }

@@ -1,19 +1,50 @@
 import React from "react";
-import Link from "../atoms/Link";
+import { Link as GatsbyLink } from 'gatsby';
+import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  margin-bottom: 5px;
+  background-color: rgba(200,216,217,.3);
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.5rem;
+`;
+
+const NavBar = styled.div`
+  margin-left: auto;
+`;
+
+const Title = styled.div`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+`;
+
+const HeaderLink = styled(GatsbyLink)`
+   color: #2b6cb0;
+   text-decoration: none;
+   
+   &:hover, &:focus {
+    text-decoration: underline;
+   }
+ `;
 
 export default function Header({ siteTitle, isFront }) {
-  const Title = isFront ? "h1" : "div";
-
   return (
-    <div className={"mb-5"} style={{background: "rgba(200,216,217,.3)"}}>
-      <div className={'max-w-5xl p-4 flex items-center mx-auto'}>
-        <Link to={"/"} className={"no-underline"}>
-          <Title className={"text-black bold text-4xl leading-none"}>{siteTitle}</Title>
-        </Link>
-        <div className={"ml-auto"}>
-          <Link className={"focus:underline hover:underline"} to="/about">About</Link>
-        </div>
-      </div>
-    </div>
+    <HeaderWrapper>
+      <HeaderContainer>
+        <HeaderLink to={"/"}>
+          <Title as={isFront ? "h1" : "div"}>{siteTitle}</Title>
+        </HeaderLink>
+        <NavBar>
+          <HeaderLink className={"focus:underline hover:underline"} to="/about">About</HeaderLink>
+        </NavBar>
+      </HeaderContainer>
+    </HeaderWrapper>
   );
 }

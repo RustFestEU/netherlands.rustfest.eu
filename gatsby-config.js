@@ -10,6 +10,7 @@ module.exports = {
     'MarkdownRemark.fields.speakers': `MarkdownRemark`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -76,7 +77,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

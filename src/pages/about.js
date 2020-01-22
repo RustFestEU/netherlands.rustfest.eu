@@ -1,9 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 import {graphql, useStaticQuery} from "gatsby";
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import Person from "../components/organisems/Person";
-import Link from "../components/atoms/Link";
+import { Link } from "gatsby";
+
+const TeamGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  column-gap: 1rem;
+  row-gap: 3rem;
+`;
 
 export default function About(props) {
   const { allTeammembers } = useStaticQuery(
@@ -13,6 +21,8 @@ export default function About(props) {
                 filter: { fields: { collection: { eq: "teammembers" } } }
             ) {
                 nodes {
+                    id
+                    about: html
                     frontmatter {
                         name
                         image {
@@ -31,15 +41,16 @@ export default function About(props) {
                         medium
                         discord
                     }
-                    about: html
                 }
             }
         }
     `
   );
 
+  console.log(allTeammembers.nodes)
+
   const teammembers = allTeammembers.nodes.map(member =>
-    <Person {...member.frontmatter} >
+    <Person key={member.id} {...member.frontmatter} >
       {member.about}
     </Person>
   );
@@ -48,16 +59,13 @@ export default function About(props) {
   return (
     <Layout>
       <SEO title={'About'} />
-      <h1 className={"text-4xl"}>About</h1>
-      <p className={"mb-2"}>RustFest is Europe’s Rust-dedicated conference. The next edition of RustFest will take place as a two-day event in the Netherlands.</p>
-      <p className={"mb-4"}>We care about diversity and accessibility at this conference – please take a look at our <Link to={"/codeofconduct"}>Code of Conduct</Link> and <Link to={"/accessibility"}>Accessibility Statement</Link>.</p>
-      <h2 className={"text-3xl mb-5"}>Team</h2>
-      <div style={{display: "grid", gridTemplateColumns:"repeat(3, 1fr)", columnGap: "1rem", rowGap: "3rem"}}>
+      <h1>About</h1>
+      <p>RustFest is Europe’s Rust-dedicated conference. The next edition of RustFest will take place as a two-day event in the Netherlands.</p>
+      <p>We care about diversity and accessibility at this conference – please take a look at our <Link to={"/codeofconduct"}>Code of Conduct</Link> and <Link to={"/accessibility"}>Accessibility Statement</Link>.</p>
+      <h2>Team</h2>
+      <TeamGrid>
         {teammembers}
-        {teammembers}
-        {teammembers}
-        {teammembers}
-      </div>
+      </TeamGrid>
     </Layout>
   );
 }
