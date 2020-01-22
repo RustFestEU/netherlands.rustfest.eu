@@ -6,10 +6,10 @@ website: https://www.alexandervarwijk.com
 twitter: https://twitter.com/Kingdutch
 linkedin: https://www.linkedin.com/in/alexander-varwijk/
 github: https://github.com/Kingdutch
-gitlab: https://github.com/Kingdutch
-behance: https://github.com/Kingdutch
-medium: https://github.com/Kingdutch
-discord: https://github.com/Kingdutch
+gitlab: ''
+behance: ''
+medium: ''
+discord: ''
 
 ---
 Alexander is a web developer with over 15 years of experience. He attended 
