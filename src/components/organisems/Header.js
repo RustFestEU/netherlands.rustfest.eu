@@ -1,10 +1,13 @@
 import React from "react";
 import { Link as GatsbyLink } from 'gatsby';
 import styled from "styled-components";
+import ActionBotton from "../atoms/ActionBotton";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 5px;
-  background-color: rgba(200,216,217,.3);
+  background-color: #211a74;
+  color: #fff;
+  display: flex;
 `;
 
 const HeaderContainer = styled.div`
@@ -26,8 +29,13 @@ const Title = styled.div`
 `;
 
 const HeaderLink = styled(GatsbyLink)`
-   color: #2b6cb0;
+   color: #fff;
    text-decoration: none;
+   margin: 0 5px 0 5px;
+   &:visited {
+    color: #fff;
+    text-decoration: none;
+   }
    
    &:hover, &:focus {
     text-decoration: underline;
@@ -45,6 +53,7 @@ export default function Header({ siteTitle, isFront }) {
           <HeaderLink className={"focus:underline hover:underline"} to="/about">About</HeaderLink>
         </NavBar>
       </HeaderContainer>
+        <ActionBotton/>
     </HeaderWrapper>
   );
 }
