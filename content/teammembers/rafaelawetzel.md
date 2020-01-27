@@ -12,4 +12,4 @@ medium: ''
 discord: ''
 
 ---
-Rafaela has not written an short biography yet.
+Rafaela joined RustFest just before the Rome event back in 2018 and has been active as project coordinator ever since. When she is not busy organizing conferences, she enjoys cats, chocolate and glitter.
