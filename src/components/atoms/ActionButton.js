@@ -12,7 +12,7 @@ const Button = styled.a`
     margin: 10px; 8px;
 `;
 
-export default function ActionButton({ href = "https://cfp.rustfest.eu" }, {text = "Submit a talk" }) {
+export default function ActionButton({href, text}) {
     return (
         <Button href={href}>{text}</Button>
         );

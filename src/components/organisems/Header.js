@@ -54,7 +54,7 @@ export default function Header({ siteTitle, isFront }) {
           <HeaderLink className={"focus:underline hover:underline"} to="/about">About</HeaderLink>
         </NavBar>
       </HeaderContainer>
-        <ActionBotton/>
+        <ActionBotton href="https://cfp.rustfest.eu" text="Submit a talk"/>
     </HeaderWrapper>
   );
 }
