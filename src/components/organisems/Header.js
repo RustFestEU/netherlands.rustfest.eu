@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as GatsbyLink } from 'gatsby';
 import styled from "styled-components";
-import ActionBotton from "../atoms/ActionBotton";
+import ActionBotton from "../atoms/ActionButton";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 5px;
