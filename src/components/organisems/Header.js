@@ -16,6 +16,7 @@ const HeaderContainer = styled.div`
   max-width: 960px;
   margin: 0 auto;
   padding: 0.5rem;
+  align-self: flex-start;
 `;
 
 const NavBar = styled.div`
@@ -25,14 +26,14 @@ const NavBar = styled.div`
 const Title = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0;
+  margin: 0 15px 0 0;
 `;
 
 const HeaderLink = styled(GatsbyLink)`
    color: #fff;
    text-decoration: none;
-   margin: 0 5px 0 5px;
-   &:visited {
+   margin: 0 10px;
+   &, &:visited {
     color: #fff;
     text-decoration: none;
    }
