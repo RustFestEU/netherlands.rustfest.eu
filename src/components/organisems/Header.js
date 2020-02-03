@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as GatsbyLink } from 'gatsby';
 import styled from "styled-components";
-import ActionBotton from "../atoms/ActionButton";
+import CallToAction from "../atoms/CallToAction";
 import Container from "../atoms/Container";
 
 const HeaderWrapper = styled.div`
@@ -52,7 +52,7 @@ export default function Header({ siteTitle, isFront }) {
         </HeaderLink>
         <NavBar>
           <HeaderLink to="/about">About</HeaderLink>
-          <ActionBotton href="https://cfp.rustfest.eu" text="Submit a talk"/>
+          <CallToAction href="https://cfp.rustfest.eu">Submit a talk</CallToAction>
         </NavBar>
       </HeaderContainer>
     </HeaderWrapper>
