@@ -52,6 +52,7 @@ export default function Header({ siteTitle, isFront }) {
         </HeaderLink>
         <NavBar>
           <HeaderLink to="/about">About</HeaderLink>
+          <HeaderLink to="/info">Info</HeaderLink>
           <CallToAction href="https://cfp.rustfest.eu">Submit a talk</CallToAction>
         </NavBar>
       </HeaderContainer>
