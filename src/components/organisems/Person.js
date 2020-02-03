@@ -121,7 +121,7 @@ export default function Person(props) {
         <PersonAvatar fluid={props.image.childImageSharp.fluid} alt={props.name} />
         <PersonName>{props.name}</PersonName>
         <Desc dangerouslySetInnerHTML={{__html: props.children}} />
-        {<GrayIcons {...props}/>}
+        {<GrayIcons onClick={e => e.stopPropagation()} {...props}/>}
       </PersonWrapper>
     </>
   );
