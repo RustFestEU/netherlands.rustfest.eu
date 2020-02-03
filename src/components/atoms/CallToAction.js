@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-const Button = styled.a`
+const CallToAction = styled.a`
     background-color:#ff8400;
     color: #fff;
     border-radius: 20px;
@@ -15,8 +15,4 @@ const Button = styled.a`
     }
 `;
 
-export default function ActionButton({href, text}) {
-    return (
-        <Button href={href}>{text}</Button>
-        );
-}
+export default CallToAction;
