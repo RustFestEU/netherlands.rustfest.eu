@@ -9,7 +9,10 @@ const Button = styled.a`
     padding: 0.6em 1em;
     text-decoration:none;
     max-height: 2.4em;
-    //margin: 10px; 8px;
+    
+    &:hover { 
+      background-color: #ff4f00;
+    }
 `;
 
 export default function ActionButton({href, text}) {
