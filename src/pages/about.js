@@ -47,8 +47,6 @@ export default function About(props) {
     `
   );
 
-  console.log(allTeammembers.nodes)
-
   const teammembers = allTeammembers.nodes.map(member =>
     <Person key={member.id} {...member.frontmatter} >
       {member.about}
