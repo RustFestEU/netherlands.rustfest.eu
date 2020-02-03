@@ -2,25 +2,20 @@ import React from "react";
 import { Link as GatsbyLink } from 'gatsby';
 import styled from "styled-components";
 import ActionBotton from "../atoms/ActionButton";
+import Container from "../atoms/Container";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 5px;
   background-color: #211a74;
   color: #fff;
-  display: flex;
 `;
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled(Container)`
   display: flex;
   align-items: center;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0.5rem;
   align-self: flex-start;
-`;
-
-const NavBar = styled.div`
-  margin-left: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 `;
 
 const Title = styled.div`
@@ -30,18 +25,23 @@ const Title = styled.div`
 `;
 
 const HeaderLink = styled(GatsbyLink)`
-   color: #fff;
-   text-decoration: none;
-   margin: 0 10px;
-   &, &:visited {
-    color: #fff;
+  &, &:visited {
+    color: inherit;
     text-decoration: none;
-   }
+  }
    
-   &:hover, &:focus {
+  &:hover, &:focus {
     text-decoration: underline;
-   }
- `;
+  }
+`;
+
+const NavBar = styled.div`
+  margin-left: auto;
+  
+  a, button {
+    margin-left: .5rem;
+  }
+`;
 
 export default function Header({ siteTitle, isFront }) {
   return (
@@ -51,10 +51,10 @@ export default function Header({ siteTitle, isFront }) {
           <Title as={isFront ? "h1" : "div"}>{siteTitle}</Title>
         </HeaderLink>
         <NavBar>
-          <HeaderLink className={"focus:underline hover:underline"} to="/about">About</HeaderLink>
+          <HeaderLink to="/about">About</HeaderLink>
+          <ActionBotton href="https://cfp.rustfest.eu" text="Submit a talk"/>
         </NavBar>
       </HeaderContainer>
-        <ActionBotton href="https://cfp.rustfest.eu" text="Submit a talk"/>
     </HeaderWrapper>
   );
 }
