@@ -1,7 +1,7 @@
 ---
 hidden: true
 name: Example Name
-image: /images/example.jpg
+image: /images/example.svg
 links:
   - icon: github
     url: https://github.com/example

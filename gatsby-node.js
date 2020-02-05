@@ -4,9 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const { createFilePath } = require("gatsby-source-filesystem");
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-
-const { createFilePath } = require('gatsby-source-filesystem');
 
 // Modify nodes that are created by plugins.
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -23,6 +22,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: 'collection',
       value: collection,
     });
+
+    // Add slug information based on the collection.
+    const slugPrefix = {
+      sessions: '/sessions',
+      speakers: '/speakers',
+      pages: '',
+    };
+    if (slugPrefix[collection] !== undefined) {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `${slugPrefix[collection]}${createFilePath({ node, getNode })}`,
+      });
+    }
   }
 };
 
@@ -104,4 +117,36 @@ exports.sourceNodes = ({ actions, getNodes, getNode }) => {
       });
     }
   );
+};
+
+// Create pages that come directly form Markdown files. These are different
+// than the dynamic overview pages in the src/pages/ folder.
+exports.createPages = async function({ actions, graphql }) {
+  const { data } = await graphql(`
+    query {
+      allPagesConnection: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "pages" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      },
+    }
+  `);
+
+  // Create all blog post pages.
+  data.allPagesConnection.edges.forEach(edge => {
+    const id = edge.node.id;
+    const slug = edge.node.fields.slug;
+    actions.createPage({
+      path: slug,
+      component: require.resolve('./src/components/templates/Page.js'),
+      context: { id },
+    });
+  });
 };
