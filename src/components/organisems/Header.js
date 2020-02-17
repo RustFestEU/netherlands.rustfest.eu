@@ -3,6 +3,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import styled from "styled-components";
 import CallToAction from "../atoms/CallToAction";
 import Container from "../atoms/Container";
+import Logo from "../atoms/Logo";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 5px;
@@ -19,9 +20,32 @@ const HeaderContainer = styled(Container)`
 `;
 
 const Title = styled.div`
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0 15px 0 0;
+  // Visually hidden on moible
+  position: absolute;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+  
+  // Shown on desktop
+  @media (min-width: 780px) {
+    // Reset visually hidden
+    position: initial;
+    width: auto;
+    height: auto;
+    overflow: initial;
+    clip: unset;
+    white-space: initial;
+  
+    // Normal style
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 15px 0 1rem;
+  }
 `;
 
 const HeaderLink = styled(GatsbyLink)`
@@ -48,6 +72,7 @@ export default function Header({ siteTitle, isFront }) {
     <HeaderWrapper>
       <HeaderContainer>
         <HeaderLink to={"/"}>
+          <Logo width={80} height={80} />
           <Title as={isFront ? "h1" : "div"}>{siteTitle}</Title>
         </HeaderLink>
         <NavBar>
