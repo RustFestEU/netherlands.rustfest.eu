@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {graphql} from "gatsby";
+import {graphql, Link} from "gatsby";
 // import Img from 'gatsby-image';
 
 import Splash from "../components/layouts/Splash";
@@ -8,6 +8,7 @@ import SEO from '../components/Seo';
 import Container from "../components/atoms/Container";
 import BgImage from "../components/atoms/BgImage";
 import MainNavigation from "../components/organisems/MainNavigation";
+import Logo from "../components/atoms/Logo";
 
 const Hero = styled.div`
   position: relative;
@@ -42,10 +43,46 @@ const Location = styled.span`
 
 const Date = Location;
 
+const Title = styled.h1`
+  color: #fff;
+
+  // Visually hidden on mobile
+  position: absolute;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+  
+  // Shown on desktop
+  @media (min-width: 780px) {
+    // Reset visually hidden
+    position: initial;
+    width: auto;
+    height: auto;
+    overflow: initial;
+    clip: unset;
+    white-space: initial;
+  
+    // Normal style
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 15px 0 1rem;
+  }
+`;
+
 const IndexPage = ({data}) => (
   <Splash>
     <SEO title={'Home'} />
-    <MainNavigation />
+    <MainNavigation>
+      <Link to={"/"}>
+        <Logo width={80} height={80}/>
+        <Title>{"RustFest.eu Netherlands"}</Title>
+      </Link>
+    </MainNavigation>
     <Hero>
       <BgImage fluid={data.file.childImageSharp.fluid} position={'center 10%'} height={'100%'} />
       <Location>Utrecht</Location> <Date>June 6 - 7</Date>

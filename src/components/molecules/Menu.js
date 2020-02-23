@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import styled from 'styled-components';
+import {Link} from "gatsby";
 
 const MENU_BREAKPOINT = '640px';
 
@@ -23,7 +24,8 @@ const MenuList = styled.ul`
   @media (min-width: ${MENU_BREAKPOINT}) {
     max-width: 960px;
     margin: 0 auto;
-    text-align: right;
+    display: flex;
+    align-items: center;
     
     .js &.open {
       background: transparent;
@@ -32,19 +34,14 @@ const MenuList = styled.ul`
 `;
 
 const MenuToggleItem = styled.li`
-  text-align: right;
-  
-  .no-js & {
-    display: none;
-  }
-  
-  @media (min-width: ${MENU_BREAKPOINT}) {
-    display: none;
-  }
+  display: flex;
+  margin-right: auto;
+  padding: 1rem;
 `;
 
 const MenuToggle = styled.button`
   display: inline-block;
+  margin-left: auto;
   width: 2rem;
   padding: 0;
   background: transparent;
@@ -73,7 +70,14 @@ const MenuToggle = styled.button`
   .open & div {
     transform: scale(0);
   }
-
+  
+  .no-js & {
+    display: none;
+  }
+  
+  @media (min-width: ${MENU_BREAKPOINT}) {
+    display: none;
+  }
 `;
 
 const MenuItem = styled.li`
@@ -99,7 +103,7 @@ const MenuItem = styled.li`
   }
 `;
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(Link)`
   display: block;
   padding: 1rem 0.5rem;
   cursor: pointer;
@@ -131,7 +135,7 @@ export const MenuCallToAction = styled(MenuLink)`
 `;
 
 export const Menu = (props) => {
-  const { children, ...rest } = props;
+  const { children, logo, ...rest } = props;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = useCallback(() => setMenuOpen(!menuOpen), [menuOpen, setMenuOpen]);
@@ -142,7 +146,8 @@ export const Menu = (props) => {
   return (
     <MenuContainer {...rest}>
       <MenuList className={menuOpen ? 'open' : null}>
-        <MenuToggleItem style={{padding: '1rem'}}>
+        <MenuToggleItem>
+          {logo}
           <MenuToggle ariaLabel={"Open Menu"} onClick={toggleMenu}>
             <div>&nbsp;</div>
           </MenuToggle>
