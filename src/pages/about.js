@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {graphql, useStaticQuery} from "gatsby";
-import Layout from "../components/Layout";
+import Default from "../components/layouts/Default";
 import SEO from "../components/Seo";
 import Person from "../components/organisems/Person";
 import { Link } from "gatsby";
@@ -55,7 +55,7 @@ export default function About(props) {
 
 
   return (
-    <Layout>
+    <Default>
       <SEO title={'About'} />
       <h1>About</h1>
       <p>RustFest is Europe’s Rust-dedicated conference. The next edition of RustFest will take place as a two-day event in the Netherlands.</p>
@@ -64,6 +64,6 @@ export default function About(props) {
       <TeamGrid>
         {teammembers}
       </TeamGrid>
-    </Layout>
+    </Default>
   );
 }

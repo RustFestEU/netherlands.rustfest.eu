@@ -1,13 +1,23 @@
 import React from "react";
-import { Link as GatsbyLink } from 'gatsby';
+import { Link } from 'gatsby';
 import styled from "styled-components";
-import CallToAction from "../atoms/CallToAction";
 import Container from "../atoms/Container";
 import Logo from "../atoms/Logo";
+import {Menu, MenuCallToAction, MenuLink, MenuToggle} from "../molecules/Menu";
+import SkipLinkContainer from "../molecules/SkipLinkContainer";
+import SkipLink from "../atoms/SkipLink";
+import MainNavigation from "./MainNavigation";
 
 const HeaderWrapper = styled.div`
-  margin-bottom: 5px;
-  background-color: #211a74;
+  ${({isFront}) => isFront ? `
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  ` : `
+    background-color: #211a74;
+  `}
+  ${({isFront}) => !isFront ? `background-color: #211a74;` : null }
   color: #fff;
 `;
 
@@ -48,38 +58,23 @@ const Title = styled.div`
   }
 `;
 
-const HeaderLink = styled(GatsbyLink)`
-  &, &:visited {
-    color: inherit;
-    text-decoration: none;
-  }
-   
-  &:hover, &:focus {
-    text-decoration: underline;
-  }
-`;
-
-const NavBar = styled.div`
-  margin-left: auto;
-  
-  a, button {
-    margin-left: .5rem;
-  }
-`;
-
 export default function Header({ siteTitle, isFront }) {
   return (
-    <HeaderWrapper>
-      <HeaderContainer>
-        <HeaderLink to={"/"}>
-          <Logo width={80} height={80} />
-          <Title as={isFront ? "h1" : "div"}>{siteTitle}</Title>
-        </HeaderLink>
-        <NavBar>
-          <HeaderLink to="/about">About</HeaderLink>
-          <CallToAction href="https://cfp.rustfest.eu">Submit a talk</CallToAction>
-        </NavBar>
-      </HeaderContainer>
-    </HeaderWrapper>
+    <>
+      <SkipLinkContainer>
+        <SkipLink href={"#main-content"}>
+          Skip to main content
+        </SkipLink>
+      </SkipLinkContainer>
+      <MainNavigation />
+      <HeaderWrapper isFront={isFront}>
+        <HeaderContainer>
+          <Link to={"/"}>
+            <Logo width={80} height={80}/>
+            <Title as={isFront ? "h1" : "div"}>{siteTitle}</Title>
+          </Link>
+        </HeaderContainer>
+      </HeaderWrapper>
+    </>
   );
 }
