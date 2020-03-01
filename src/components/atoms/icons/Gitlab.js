@@ -8,6 +8,7 @@ const Gitlab = props => (
     viewBox="0 0 500 500"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <g id="logo-no-bg" transform="translate(2.000000, 19.000000)">
       <g

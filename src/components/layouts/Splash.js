@@ -6,9 +6,9 @@
  */
 
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import Base from './_Base';
-import Header from "../organisems/Header";
+import Header from '../organisems/Header';
 
 const OverlaidHeader = styled(Header)`
   // On devices where we can expand/collapse our mobile menu use an overlay.

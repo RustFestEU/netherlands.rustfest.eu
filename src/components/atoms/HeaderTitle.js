@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import { breakpoints } from '../tokens';
-const { TITLE_BREAKPOINT} = breakpoints;
+const { TITLE_BREAKPOINT } = breakpoints;
 
 /**
  * The title that should be used in the header.

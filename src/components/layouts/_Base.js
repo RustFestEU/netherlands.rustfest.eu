@@ -8,7 +8,8 @@
 import React, { useMemo } from 'react';
 import GlobalStyle from '../atoms/GlobalStyle';
 import { Helmet } from 'react-helmet';
-import {graphql, useStaticQuery} from "gatsby";
+import { graphql, useStaticQuery } from 'gatsby';
+import Footer from '../organisems/Footer';
 
 const Base = ({ Header, headerTitleAs, children }) => {
   // Mark the document as having JavaScript support. useMemo will run once
@@ -18,21 +19,25 @@ const Base = ({ Header, headerTitleAs, children }) => {
 
   // Get some metadata for the site.
   const data = useStaticQuery(graphql`
-      query {
-          site {
-              siteMetadata {
-                  title
-              }
-          }
+    query {
+      site {
+        siteMetadata {
+          title
+        }
       }
+    }
   `);
 
   return (
     <>
       <Helmet htmlAttributes={{ class: jsSupport ? 'js' : 'no-js' }} />
       <GlobalStyle />
-      <Header titleAs={headerTitleAs} siteTitle={data.site.siteMetadata.title} />
+      <Header
+        titleAs={headerTitleAs}
+        siteTitle={data.site.siteMetadata.title}
+      />
       {children}
+      <Footer />
     </>
   );
 };

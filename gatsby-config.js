@@ -64,6 +64,14 @@ module.exports = {
       },
     },
     {
+      // Pull in the articles from the RustFest blog.
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: `https://blog.rustfest.eu/feed.xml`,
+        name: `RustFestBlog`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

@@ -146,6 +146,8 @@ export const MenuLink = styled(Link)`
  * Provides a menu link styled as call to action on mobile and desktop.
  *
  * Wraps the Link element exported by Gatsby. Inherits styles from MenuLink.
+ * In case a call to action links to an external site the "as" attribute should
+ * be used.
  */
 export const MenuCallToAction = styled(MenuLink)`
   display: block;
@@ -197,7 +199,11 @@ export const Menu = ({ children, logo, ...rest }) => {
   ]);
 
   // Wrap all Menu links in a list item for styling.
-  const listChildren = children.map(child => <MenuItem>{child}</MenuItem>);
+  // Normally using the index of a map as key is bad but we assume the list of
+  // links in the menu never changes.
+  const listChildren = children.map((child, i) => (
+    <MenuItem key={i}>{child}</MenuItem>
+  ));
 
   return (
     <nav {...rest}>

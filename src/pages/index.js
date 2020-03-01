@@ -8,6 +8,9 @@ import Container from '../components/atoms/Container';
 import BgImage from '../components/atoms/BgImage';
 import { breakpoints } from '../components/tokens';
 import CallToAction from '../components/atoms/CallToAction';
+import RecentBlogPost from '../components/molecules/RecentBlogPost';
+import MailChimpSubscriptionForm from '../components/molecules/MailChimpSubscriptionForm';
+import { Twitter as TwitterIcon } from '../components/atoms/icons';
 
 const { TITLE_BREAKPOINT } = breakpoints;
 
@@ -31,25 +34,31 @@ const Hero = styled.div`
 `;
 
 // Styling of h2.
-const Location = styled.span`
+const City = styled.span`
   display: block;
   font-size: 2em;
   font-weight: bold;
   margin-block-start: 0.83em;
+  margin-block-end: 0.5rem;
+`;
+const Venue = styled.span`
+  display: block;
+  text-align: center;
   margin-block-end: 0.83em;
 `;
 
-const Date = styled(Location)`
+const Date = styled(City)`
   .no-js & {
     margin-bottom: 5rem;
   }
 `;
 
 const SplashTitle = styled.h1`
-  color: #fff;
+  margin: 0 15px 0 1rem;
+  text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  margin: 0 15px 0 1rem;
+  color: #fff;
 
   @media (min-width: ${TITLE_BREAKPOINT}) {
     display: none;
@@ -66,7 +75,11 @@ const IndexPage = ({ data }) => (
         height={'100%'}
       />
       <SplashTitle>{'RustFest.eu Netherlands'}</SplashTitle>
-      <Location>Utrecht</Location> <Date>June 6 - 7</Date>
+      <City>Utrecht</City>{' '}
+      <Venue>
+        University of Utrecht <br /> Educatorium
+      </Venue>{' '}
+      <Date>June 6 - 7</Date>
       <CallToAction
         style={{
           fontSize: '1.5rem',
@@ -74,27 +87,24 @@ const IndexPage = ({ data }) => (
           position: 'absolute',
           bottom: 0,
         }}
-        href={'#'}
+        href={'https://ti.to/rustfest/netherlands-2020'}
       >
         <b>Buy Tickets</b>
       </CallToAction>
     </Hero>
     <Container>
-      <div className="placeholder">
-        <p>
-          The RustFest Netherlands team are working hard behind the scenes on
-          getting everything ready. We hope to tell you more soon so keep an eye
-          on the{' '}
-          <a href="https://blog.rustfest.eu/" title="The RustFest blog">
-            RustFest blog
-          </a>{' '}
-          and follow us on{' '}
-          <a href="https://twitter.com/rustfest" title="RustFest on Twitter">
-            Twitter
-          </a>
-          !
-        </p>
-      </div>
+      <h2>Latest news</h2>
+      <RecentBlogPost />
+      <h2>Updates right to your inbox</h2>
+      <p>Join our mailing list to always receive the latest info:</p>
+      <MailChimpSubscriptionForm />
+      <h2>
+        <TwitterIcon style={{ verticalAlign: 'middle' }} />
+        Hear us chirp
+      </h2>
+      <a href="https://www.twitter.com/rustfest">
+        Follow @rustfest on Twitter.
+      </a>
     </Container>
   </Splash>
 );
