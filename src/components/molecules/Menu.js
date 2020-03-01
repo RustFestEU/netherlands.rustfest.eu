@@ -160,9 +160,9 @@ export const MenuCallToAction = styled(MenuLink)`
   }
 
   @media (min-width: ${MENU_BREAKPOINT}) {
-    padding: 0.6rem 0.5rem;
+    padding: 0.4rem 0.6rem;
     margin: 0.4rem 0;
-    border-radius: 20px;
+    border-radius: 4px;
   }
 `;
 
