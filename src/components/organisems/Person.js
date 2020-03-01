@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import AvatarBase from '../molecules/Avatar';
 import PersonIcons from '../molecules/PersonIcons';
+import { breakpoints } from '../tokens';
+
+const { TEAM_GRID_2_BREAKPOINT } = breakpoints;
 
 const Modal = styled.div`
   position: fixed;
@@ -9,7 +12,6 @@ const Modal = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
   z-index: 10;
   display: flex;
   flex-direction: row;
@@ -33,19 +35,36 @@ const ModalContent = styled.div`
 const PersonWrapper = styled.div`
   text-align: center;
   cursor: pointer;
+
+  & ~ & {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: ${TEAM_GRID_2_BREAKPOINT}) {
+    & ~ & {
+      margin-top: 0;
+    }
+  }
 `;
 
 const ModalAvatar = styled(AvatarBase)`
   flex: none;
-  width: 10rem;
-  height: 10rem;
+  width: 5rem;
+  height: 5rem;
   margin-right: 1rem;
   align-self: center;
+
+  @media (min-width: 30rem) {
+    width: 10rem;
+    height: 10rem;
+  }
 `;
 
 const PersonAvatar = styled(AvatarBase)`
-  width: 14rem;
-  height: 14rem;
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+  max-height: 14rem;
   border: 4px solid white;
 `;
 

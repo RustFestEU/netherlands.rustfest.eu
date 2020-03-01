@@ -5,12 +5,21 @@ import Default from '../components/layouts/Default';
 import SEO from '../components/Seo';
 import Person from '../components/organisems/Person';
 import { Link } from 'gatsby';
+import { breakpoints } from '../components/tokens';
+
+const { TEAM_GRID_2_BREAKPOINT, TEAM_GRID_3_BREAKPOINT } = breakpoints;
 
 const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 1rem;
-  row-gap: 3rem;
+  @media (min-width: ${TEAM_GRID_2_BREAKPOINT}) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    row-gap: 3rem;
+  }
+
+  @media (min-width: ${TEAM_GRID_3_BREAKPOINT}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export default function About(props) {
