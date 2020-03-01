@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
-import styled from "styled-components";
-import AvatarBase from "../molecules/Avatar";
-import PersonIcons from "../molecules/PersonIcons";
+import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import AvatarBase from '../molecules/Avatar';
+import PersonIcons from '../molecules/PersonIcons';
 
 const Modal = styled.div`
   position: fixed;
-  top: 0; 
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -14,7 +14,7 @@ const Modal = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
 `;
 
 const ModalContent = styled.div`
@@ -24,9 +24,9 @@ const ModalContent = styled.div`
   margin: 0 auto;
   padding: 1rem;
   background: white;
-  
+
   &:focus {
-    outline:0;
+    outline: 0;
   }
 `;
 
@@ -73,7 +73,6 @@ const divSrOnly = styled.div`
   border-width: 0;
 `;
 
-
 export default function Person(props) {
   const [hasJs, enableJs] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -83,7 +82,8 @@ export default function Person(props) {
   const hide = () => setVisible(false);
 
   // The attribute check ensures that the modal doesn't open for links.
-  const showOnEnter = e => e.keyCode === 13 && e.target.getAttribute('data-modalcontrol') && show();
+  const showOnEnter = e =>
+    e.keyCode === 13 && e.target.getAttribute('data-modalcontrol') && show();
   const hideOnEsc = e => e.keyCode === 27 && hide();
 
   const modalRef = useRef();
@@ -94,7 +94,7 @@ export default function Person(props) {
   });
 
   // Show non-pop-over description only for screenreaders.
-  const Desc = hasJs ? divSrOnly : "div";
+  const Desc = hasJs ? divSrOnly : 'div';
 
   const modal = visible ? (
     <Modal onClick={hide}>
@@ -104,11 +104,14 @@ export default function Person(props) {
         onKeyUp={hideOnEsc}
         onClick={e => e.stopPropagation()}
       >
-        <ModalAvatar fluid={props.image.childImageSharp.fluid} alt={props.name} />
+        <ModalAvatar
+          fluid={props.image.childImageSharp.fluid}
+          alt={props.name}
+        />
         <div>
           <PersonName>{props.name}</PersonName>
-          <div dangerouslySetInnerHTML={{__html: props.children}} />
-          {<BlackIcons {...props}/>}
+          <div dangerouslySetInnerHTML={{ __html: props.children }} />
+          {<BlackIcons {...props} />}
         </div>
       </ModalContent>
     </Modal>
@@ -117,11 +120,19 @@ export default function Person(props) {
   return (
     <>
       {modal}
-      <PersonWrapper data-modalcontrol={true} tabIndex={0} onKeyUp={showOnEnter} onClick={show} >
-        <PersonAvatar fluid={props.image.childImageSharp.fluid} alt={props.name} />
+      <PersonWrapper
+        data-modalcontrol={true}
+        tabIndex={0}
+        onKeyUp={showOnEnter}
+        onClick={show}
+      >
+        <PersonAvatar
+          fluid={props.image.childImageSharp.fluid}
+          alt={props.name}
+        />
         <PersonName>{props.name}</PersonName>
-        <Desc dangerouslySetInnerHTML={{__html: props.children}} />
-        {<GrayIcons onClick={e => e.stopPropagation()} {...props}/>}
+        <Desc dangerouslySetInnerHTML={{ __html: props.children }} />
+        {<GrayIcons onClick={e => e.stopPropagation()} {...props} />}
       </PersonWrapper>
     </>
   );

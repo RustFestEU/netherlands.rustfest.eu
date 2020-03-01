@@ -129,7 +129,6 @@ files in the `/content/speakers` folder.
 
 ## Adding teammembers
 
-
 Copy the template below and change values as needed.
 
 ```markdown
@@ -145,11 +144,11 @@ gitlab: https://gitlab.com/janedoe
 behance: https://www.behance.net/janedoe
 medium: https://www.medium.com/@janedoe
 discord: discord://janedoe#1234
-
 ---
-Jane Doe has a lot of experience with organising conferences and will be 
+
+Jane Doe has a lot of experience with organising conferences and will be
 attending RustFest for the third time. This is her first time organising RustFest.
 ```
 
-Name, role and image are mandatory (use an anonymous image if the teammember does not 
+Name, role and image are mandatory (use an anonymous image if the teammember does not
 want to display one). The other fields will only be output when filled.

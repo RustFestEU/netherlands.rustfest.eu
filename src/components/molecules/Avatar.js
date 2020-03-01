@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import GatsbyImage from 'gatsby-image';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Img = styled(GatsbyImage)`
   display: inline-block;
@@ -8,5 +8,5 @@ const Img = styled(GatsbyImage)`
 `;
 
 export default function Avatar(props) {
-  return <Img {...props} />
+  return <Img {...props} />;
 }

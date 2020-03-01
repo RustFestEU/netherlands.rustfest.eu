@@ -1,8 +1,7 @@
-import React from "react";
-import {Menu, MenuCallToAction, MenuLink} from "../molecules/Menu";
+import React from 'react';
+import { Menu, MenuCallToAction, MenuLink } from '../molecules/Menu';
 
-
-const MainNavigation = ({children}) => {
+const MainNavigation = ({ children }) => {
   return (
     <Menu logo={children}>
       <MenuLink to="/about">About</MenuLink>

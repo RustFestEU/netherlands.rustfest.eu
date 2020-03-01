@@ -1,6 +1,5 @@
-import React from 'react'
-import Image from 'gatsby-image'
-import styled from 'styled-components'
+import Image from 'gatsby-image';
+import styled from 'styled-components';
 
 /**
  * Provides a background image for elements using gatsby-image.
@@ -20,8 +19,7 @@ const BgImage = styled(Image)`
   & img {
     object-fit: ${props => props.fit || 'cover'} !important;
     object-position: ${props => props.position || '50% 50%'} !important;
-    font-family: 'object-fit: ${props => props.fit || 'cover'} !important; object-position: ${props => props.position || '50% 50%'} !important;'
   }
-`
+`;
 
-export default BgImage
+export default BgImage;

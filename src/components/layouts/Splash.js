@@ -6,14 +6,10 @@
  */
 
 import React from 'react';
-import Base from "./_Base";
+import Base from './_Base';
 
 const Splash = ({ children, ...rest }) => {
-  return (
-    <Base {...rest}>
-      {children}
-    </Base>
-  );
+  return <Base {...rest}>{children}</Base>;
 };
 
 export default Splash;

@@ -7,19 +7,19 @@
 
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Header from "../organisems/Header";
-import Container from "../atoms/Container";
-import Base from "./_Base";
+import Header from '../organisems/Header';
+import Container from '../atoms/Container';
+import Base from './_Base';
 
 const Default = ({ children, ...rest }) => {
   const data = useStaticQuery(graphql`
-      query {
-          site {
-              siteMetadata {
-                  title
-              }
-          }
+    query {
+      site {
+        siteMetadata {
+          title
+        }
       }
+    }
   `);
 
   return (

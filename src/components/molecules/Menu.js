@@ -1,14 +1,17 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import {Link} from "gatsby";
+import { Link } from 'gatsby';
+import { breakpoints } from '../tokens';
 
-const MENU_BREAKPOINT = '640px';
+const { MENU_BREAKPOINT } = breakpoints;
 
 const MenuContainer = styled.nav`
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  .js & {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
 `;
 
 const MenuList = styled.ul`
@@ -16,17 +19,18 @@ const MenuList = styled.ul`
   padding: 0;
   list-style: none;
   text-align: center;
- 
-  .no-js &, .js &.open {
+
+  .no-js &,
+  .js &.open {
     background: #211a74;
   }
-  
+
   @media (min-width: ${MENU_BREAKPOINT}) {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    
+
     .js &.open {
       background: transparent;
     }
@@ -47,34 +51,36 @@ const MenuToggle = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  
-  & div, &:before, &:after {
+
+  & div,
+  &:before,
+  &:after {
     display: block;
-    content: " ";
+    content: ' ';
     height: 5px;
     border-radius: 3px;
     background: #fff;
     margin: 7px 0;
-   
-    transition: all .2s ease-in-out;
+
+    transition: all 0.2s ease-in-out;
   }
-  
+
   .open &:before {
     transform: translateY(12px) rotate(135deg);
   }
-  
+
   .open &:after {
     transform: translateY(-12px) rotate(-135deg);
   }
-  
+
   .open & div {
     transform: scale(0);
   }
-  
+
   .no-js & {
     display: none;
   }
-  
+
   @media (min-width: ${MENU_BREAKPOINT}) {
     display: none;
   }
@@ -82,20 +88,20 @@ const MenuToggle = styled.button`
 
 const MenuItem = styled.li`
   color: #fff;
-  
+
   & + & {
     border-top: 1px solid #fff;
   }
-  
+
   .js ul:not(.open) & {
     display: none;
   }
-  
+
   @media (min-width: ${MENU_BREAKPOINT}) {
     & + & {
       border-top: none;
     }
-    
+
     .js ul &,
     .js ul:not(.open) & {
       display: inline-block;
@@ -107,26 +113,29 @@ export const MenuLink = styled(Link)`
   display: block;
   padding: 1rem 0.5rem;
   cursor: pointer;
-  
-  &, &:visited {
+
+  &,
+  &:visited {
     color: inherit;
     text-decoration: none;
   }
-   
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 `;
 
 export const MenuCallToAction = styled(MenuLink)`
   display: block;
-  background-color:#ff8400;
-  
-  &:hover, &:focus { 
+  background-color: #ff8400;
+
+  &:hover,
+  &:focus {
     background-color: #ff4f00;
     text-decoration: none;
   }
-  
+
   @media (min-width: ${MENU_BREAKPOINT}) {
     padding: 0.6rem 0.5rem;
     margin: 0.4rem 0;
@@ -134,11 +143,14 @@ export const MenuCallToAction = styled(MenuLink)`
   }
 `;
 
-export const Menu = (props) => {
+export const Menu = props => {
   const { children, logo, ...rest } = props;
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = useCallback(() => setMenuOpen(!menuOpen), [menuOpen, setMenuOpen]);
+  const toggleMenu = useCallback(() => setMenuOpen(!menuOpen), [
+    menuOpen,
+    setMenuOpen,
+  ]);
 
   // Wrap all Menu links in a list item for styling.
   const listChildren = children.map(child => <MenuItem>{child}</MenuItem>);
@@ -148,7 +160,7 @@ export const Menu = (props) => {
       <MenuList className={menuOpen ? 'open' : null}>
         <MenuToggleItem>
           {logo}
-          <MenuToggle ariaLabel={"Open Menu"} onClick={toggleMenu}>
+          <MenuToggle ariaLabel={'Open Menu'} onClick={toggleMenu}>
             <div>&nbsp;</div>
           </MenuToggle>
         </MenuToggleItem>

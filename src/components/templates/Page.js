@@ -8,9 +8,7 @@ export default ({ data }) => {
 
   return (
     <Default>
-      <SEO
-        title={page.frontmatter.title}
-      />
+      <SEO title={page.frontmatter.title} />
       <article>
         <h1>{page.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: page.html }} />
@@ -20,12 +18,12 @@ export default ({ data }) => {
 };
 
 export const query = graphql`
-    query($id: String!) {
-        page: markdownRemark(id: { eq: $id }) {
-            html
-            frontmatter {
-                title
-            }
-        },
+  query($id: String!) {
+    page: markdownRemark(id: { eq: $id }) {
+      html
+      frontmatter {
+        title
+      }
     }
+  }
 `;

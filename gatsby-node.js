@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const { createFilePath } = require("gatsby-source-filesystem");
+const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 // Modify nodes that are created by plugins.
@@ -135,7 +135,7 @@ exports.createPages = async function({ actions, graphql }) {
             }
           }
         }
-      },
+      }
     }
   `);
 
