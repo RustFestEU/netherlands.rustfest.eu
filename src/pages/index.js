@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, Link } from 'gatsby';
-// import Img from 'gatsby-image';
+import { graphql } from 'gatsby';
 
 import Splash from '../components/layouts/Splash';
 import SEO from '../components/Seo';
 import Container from '../components/atoms/Container';
 import BgImage from '../components/atoms/BgImage';
-import MainNavigation from '../components/organisems/MainNavigation';
-import Logo from '../components/atoms/Logo';
 import { breakpoints } from '../components/tokens';
 import CallToAction from '../components/atoms/CallToAction';
 
@@ -48,37 +45,6 @@ const Date = styled(Location)`
   }
 `;
 
-const Title = styled.h1`
-  color: #fff;
-
-  // Visually hidden on mobile
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap; /* added line */
-
-  // Shown on desktop
-  @media (min-width: ${TITLE_BREAKPOINT}) {
-    // Reset visually hidden
-    position: initial;
-    width: auto;
-    height: auto;
-    overflow: initial;
-    clip: unset;
-    white-space: initial;
-
-    // Normal style
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 15px 0 1rem;
-  }
-`;
-
 const SplashTitle = styled.h1`
   color: #fff;
   font-size: 2rem;
@@ -91,14 +57,8 @@ const SplashTitle = styled.h1`
 `;
 
 const IndexPage = ({ data }) => (
-  <Splash>
+  <Splash headerTitleAs={'h1'}>
     <SEO title={'Home'} />
-    <MainNavigation>
-      <Link to={'/'}>
-        <Logo width={80} height={80} />
-        <Title>{'RustFest.eu Netherlands'}</Title>
-      </Link>
-    </MainNavigation>
     <Hero>
       <BgImage
         fluid={data.file.childImageSharp.fluid}

@@ -1,81 +1,41 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
-import Container from '../atoms/Container';
-import Logo from '../atoms/Logo';
-import SkipLinkContainer from '../molecules/SkipLinkContainer';
-import SkipLink from '../atoms/SkipLink';
-import MainNavigation from './MainNavigation';
+import { Menu, MenuCallToAction, MenuLink } from '../molecules/Menu';
+import Logo from "../atoms/Logo";
+import HeaderTitle from "../atoms/HeaderTitle";
+import {Link} from "gatsby";
 
-const HeaderWrapper = styled.div`
-  ${({ isFront }) =>
-    isFront
-      ? `
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 10;
-  `
-      : `
-    background-color: #211a74;
-  `}
-  ${({ isFront }) =>
-    !isFront ? `background-color: #211a74;` : null}
-  color: #fff;
-`;
+/**
+ * Provides the main header for the website.
+ *
+ * Renders the logo and site title with the responsive menu.
+ *
+ * @param {string} siteTitle
+ *   The title of the site that should be displayed.
+ * @param {string} titleAs
+ *   The element to use for displaying the site title. Can be used to display
+ *   the site title as h1 on the homepage (default: 'div')
+ * @param ...rest
+ *   Other properties that will be passed on to the Menu container.
+ * @return {ReactElement}
+ *   The header element.
+ */
+const Header = ({ siteTitle, titleAs='div', ...rest }) => {
 
-const HeaderContainer = styled(Container)`
-  display: flex;
-  align-items: center;
-  align-self: flex-start;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-`;
-
-const Title = styled.div`
-  // Visually hidden on moible
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap; /* added line */
-
-  // Shown on desktop
-  @media (min-width: 780px) {
-    // Reset visually hidden
-    position: initial;
-    width: auto;
-    height: auto;
-    overflow: initial;
-    clip: unset;
-    white-space: initial;
-
-    // Normal style
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 15px 0 1rem;
-  }
-`;
-
-export default function Header({ siteTitle, isFront }) {
-  return (
-    <>
-      <SkipLinkContainer>
-        <SkipLink href={'#main-content'}>Skip to main content</SkipLink>
-      </SkipLinkContainer>
-      <MainNavigation />
-      <HeaderWrapper isFront={isFront}>
-        <HeaderContainer>
-          <Link to={'/'}>
-            <Logo width={80} height={80} />
-            <Title as={isFront ? 'h1' : 'div'}>{siteTitle}</Title>
-          </Link>
-        </HeaderContainer>
-      </HeaderWrapper>
-    </>
+  const TitleAndLogo = (
+    <Link to={'/'}>
+      <Logo width={80} height={80} />
+      <HeaderTitle as={titleAs}>{siteTitle}</HeaderTitle>
+    </Link>
   );
-}
+
+  return (
+    <Menu logo={TitleAndLogo} {...rest}>
+      <MenuLink to="/about">About</MenuLink>
+      <MenuCallToAction href="https://cfp.rustfest.eu">
+        Submit a talk
+      </MenuCallToAction>
+    </Menu>
+  );
+};
+
+export default Header;

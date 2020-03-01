@@ -5,15 +5,11 @@ import { breakpoints } from '../tokens';
 
 const { MENU_BREAKPOINT } = breakpoints;
 
-const MenuContainer = styled.nav`
-  .js & {
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-`;
-
+/**
+ * The actual list element that wraps the menu.
+ *
+ * All children of this menu should be li elements.
+ */
 const MenuList = styled.ul`
   margin: 0;
   padding: 0;
@@ -37,12 +33,24 @@ const MenuList = styled.ul`
   }
 `;
 
+/**
+ * An item that wraps the hamburger toggle and site logo.
+ *
+ * This ensures that those items are properly displayed no matter the state of
+ * the menu.
+ */
 const MenuToggleItem = styled.li`
   display: flex;
   margin-right: auto;
   padding: 1rem;
 `;
 
+/**
+ * The hamburger icon.
+ *
+ * This determines the visibility of the menu on mobile when JavaScript is
+ * enabled.
+ */
 const MenuToggle = styled.button`
   display: inline-block;
   margin-left: auto;
@@ -86,6 +94,9 @@ const MenuToggle = styled.button`
   }
 `;
 
+/**
+ * Internal wrapper for the menu links.
+ */
 const MenuItem = styled.li`
   color: #fff;
 
@@ -109,6 +120,11 @@ const MenuItem = styled.li`
   }
 `;
 
+/**
+ * Provides a default menu link with a hover style.
+ *
+ * Wraps the Link element exported by Gatsby.
+ */
 export const MenuLink = styled(Link)`
   display: block;
   padding: 1rem 0.5rem;
@@ -126,6 +142,11 @@ export const MenuLink = styled(Link)`
   }
 `;
 
+/**
+ * Provides a menu link styled as call to action on mobile and desktop.
+ *
+ * Wraps the Link element exported by Gatsby. Inherits styles from MenuLink.
+ */
 export const MenuCallToAction = styled(MenuLink)`
   display: block;
   background-color: #ff8400;
@@ -143,9 +164,32 @@ export const MenuCallToAction = styled(MenuLink)`
   }
 `;
 
-export const Menu = props => {
-  const { children, logo, ...rest } = props;
-
+/**
+ * Provides a dynamic Menu element for mobile and desktop.
+ *
+ * This element has no background color so that it may be controlled by the
+ * parent.
+ *
+ * On mobile with JavaScript disabled, this will always show the menu as a list
+ * with each menu item a clickable element. On mobile with JavaScript enabled
+ * the list will be hidden behind a hamburger menu.
+ *
+ * On desktop will display a horizontal menu.
+ *
+ * To work properly with the mobile hamburger menu this element is also passed
+ * the site logo and title and takes care of it rendering.
+ *
+ * @param children
+ *   A list of links that should be put in the menu. Each element will be
+ *   wrapped in a MenuItem by the Menu element.
+ * @param logo
+ *   An element that will be rendered as logo and site title.
+ * @param ...rest
+ *   Any other parameters will be passed on to the container element.
+ * @return {ReactElement}
+ *   The created menu.
+ */
+export const Menu = ({ children, logo, ...rest }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = useCallback(() => setMenuOpen(!menuOpen), [
     menuOpen,
@@ -156,7 +200,7 @@ export const Menu = props => {
   const listChildren = children.map(child => <MenuItem>{child}</MenuItem>);
 
   return (
-    <MenuContainer {...rest}>
+    <nav {...rest}>
       <MenuList className={menuOpen ? 'open' : null}>
         <MenuToggleItem>
           {logo}
@@ -166,6 +210,6 @@ export const Menu = props => {
         </MenuToggleItem>
         {listChildren}
       </MenuList>
-    </MenuContainer>
+    </nav>
   );
 };

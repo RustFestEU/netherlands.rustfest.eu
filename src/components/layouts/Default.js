@@ -6,25 +6,21 @@
  */
 
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import styled from "styled-components";
 import Header from '../organisems/Header';
 import Container from '../atoms/Container';
 import Base from './_Base';
 
-const Default = ({ children, ...rest }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+const BlueHeader = styled(Header)`
+  background-color: #211a74;
+`;
 
+/**
+ * Renders the base layout with a blue header in the normal page flow.
+ */
+const Default = ({ children, ...rest }) => {
   return (
-    <Base {...rest}>
-      <Header siteTitle={data.site.siteMetadata.title} />
+    <Base Header={BlueHeader} {...rest}>
       <Container>{children}</Container>
     </Base>
   );
