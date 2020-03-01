@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled, {createGlobalStyle} from "styled-components";
 import Header from "./organisems/Header";
+import Container from "./atoms/Container";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -40,12 +41,6 @@ p {
     max-width: 600px;
 }
 `;
-
-const Container = styled.main`
-    margin: 0 auto;
-    max-width: 960px;
-    padding: 0 1.0875rem 1.45rem;
-`
 
 const Layout = ({ children, isFront = false }) => {
   const data = useStaticQuery(graphql`

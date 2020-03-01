@@ -1,7 +1,12 @@
 import React from "react";
+import styled from 'styled-components';
+
+const CenteredSvg = styled.svg`
+  vertical-align: middle;
+`;
 
 export default function Logo({ width = "200", height = "200" }) {
-  return <svg
+  return <CenteredSvg
     xmlns="http://www.w3.org/2000/svg"
     version="1"
     id="_x30_"
@@ -219,5 +224,5 @@ export default function Logo({ width = "200", height = "200" }) {
         </g>
       </g>
     </g>
-  </svg>;
+  </CenteredSvg>;
 }

@@ -2,13 +2,11 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Logo from "../components/atoms/Logo";
 
 const IndexPage = () => (
   <Layout isFront={true}>
     <SEO title={'Home'} />
     <div className="placeholder">
-      <Logo />
       <h1>RustFest Netherlands - Q2 2020</h1>
       <p>
         The RustFest Netherlands team are working hard behind the scenes on
