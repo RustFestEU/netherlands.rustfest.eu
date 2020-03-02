@@ -12,4 +12,7 @@ medium: https://medium.com/@slsoftworks
 discord: ''
 
 ---
-István has not written an short biography yet.
+Istvan Szmozsanszky (or Flaki, for short) is a JavaScript engineer, trainer & 
+Mozilla Tech Speaker. Flaki works with Mozilla's DevRel team on promoting the 
+open web platform & making it accessible to all. He loves JavaScript internals 
+& is often found playing (quite literally) with microcontrollers.
