@@ -80,17 +80,17 @@ const IndexPage = ({ data }) => (
         University of Utrecht <br /> Educatorium
       </Venue>{' '}
       <Date>June 6 - 7</Date>
-      <CallToAction
-        style={{
-          fontSize: '1.5rem',
-          borderRadius: '0',
-          position: 'absolute',
-          bottom: 0,
-        }}
-        href={'https://ti.to/rustfest/netherlands-2020'}
-      >
-        <b>Buy Tickets</b>
-      </CallToAction>
+      {/*<CallToAction*/}
+      {/*  style={{*/}
+      {/*    fontSize: '1.5rem',*/}
+      {/*    borderRadius: '0',*/}
+      {/*    position: 'absolute',*/}
+      {/*    bottom: 0,*/}
+      {/*  }}*/}
+      {/*  href={'https://ti.to/rustfest/netherlands-2020'}*/}
+      {/*>*/}
+      {/*  <b>Buy Tickets</b>*/}
+      {/*</CallToAction>*/}
     </Hero>
     <Container>
       <h2>Latest news</h2>
