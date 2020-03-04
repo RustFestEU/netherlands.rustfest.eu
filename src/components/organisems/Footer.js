@@ -8,10 +8,18 @@ const FooterWrapper = styled.div`
   background-color: rgb(240, 240, 240);
 `;
 
+const FlexContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+`
+
 export default function Footer() {
   return (
     <FooterWrapper>
-      <Container>© Copyright Stichting Rust Nederland</Container>
+      <FlexContainer>
+        <span>© Copyright Stichting Rust Nederland</span>
+        <a href={"https://blog.rustfest.eu/past_events/"} title={"View past events"}>Past Events</a>
+      </FlexContainer>
     </FooterWrapper>
   );
 }
