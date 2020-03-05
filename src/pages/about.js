@@ -59,7 +59,7 @@ export default function About(props) {
       <SEO title={'About'} />
       <h1>About</h1>
       <p>RustFest is Europe’s Rust-dedicated conference. The next edition of RustFest will take place as a two-day event in the Netherlands.</p>
-      <p>We care about diversity and accessibility at this conference – please take a look at our <Link to={"/codeofconduct"}>Code of Conduct</Link> and <Link to={"/accessibility"}>Accessibility Statement</Link>.</p>
+      <p>We care about diversity and accessibility at this conference – please take a look at our <Link to={"/info/code-of-conduct"}>Code of Conduct</Link> and <Link to={"/info/accessibility"}>Accessibility Statement</Link>.</p>
       <h2>Team</h2>
       <TeamGrid>
         {teammembers}

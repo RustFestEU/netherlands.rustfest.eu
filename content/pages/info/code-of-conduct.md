@@ -1,6 +1,5 @@
 ---
 title: Conference Code of Conduct
-slug: /code-of-conduct/
 ---
 
 _This Code of Conduct is also available in [Dutch](http://nl.confcodeofconduct.com), [French](http://fr.confcodeofconduct.com), [German](http://de.confcodeofconduct.com), [Italian](http://it.confcodeofconduct.com), [Norwegian](http://no.confcodeofconduct.com), [Polish](http://pl.confcodeofconduct.com), [Portuguese(Brazil)](http://pt-br.confcodeofconduct.com), [Russian](http://ru.confcodeofconduct.com), [Spanish](http://es.confcodeofconduct.com), [Japanese](http://ja.confcodeofconduct.com), [Hebrew](http://he.confcodeofconduct.com), [Turkish](http://tr.confcodeofconduct.com/), [Traditional Chinese](http://tw.confcodeofconduct.com/)._

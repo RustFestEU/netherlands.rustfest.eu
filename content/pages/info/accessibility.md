@@ -1,6 +1,5 @@
 ---
 title: Accessibility Statement
-slug: /accessibility/
 ---
 
 <h2>Need Help?</h2>
