@@ -12,4 +12,6 @@ medium: ''
 discord: ''
 
 ---
-Jan-Erik has not written an short biography yet.
+Jan-Erik is a Firefox Engineer at Mozilla, working from Berlin, Germany.
+He's an active member of the Rust community team since 2014.
+To get away from computers he picked up scuba diving to see the world under water.
