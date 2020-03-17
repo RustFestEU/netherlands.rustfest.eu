@@ -11,14 +11,19 @@ const FooterWrapper = styled.div`
 const FlexContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export default function Footer() {
   return (
     <FooterWrapper>
       <FlexContainer>
         <span>© Copyright Stichting Rust Nederland</span>
-        <a href={"https://blog.rustfest.eu/past_events/"} title={"View past events"}>Past Events</a>
+        <a
+          href={'https://blog.rustfest.eu/past_events/'}
+          title={'View past events'}
+        >
+          Past Events
+        </a>
       </FlexContainer>
     </FooterWrapper>
   );

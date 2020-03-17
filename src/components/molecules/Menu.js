@@ -201,9 +201,10 @@ export const Menu = ({ children, logo, ...rest }) => {
   // Wrap all Menu links in a list item for styling.
   // Normally using the index of a map as key is bad but we assume the list of
   // links in the menu never changes.
-  const listChildren = (Array.isArray(children) ? children : [children]).map((child, i) => (
-    <MenuItem key={i}>{child}</MenuItem>
-  ));
+  const listChildren = (Array.isArray(children)
+    ? children
+    : [children]
+  ).map((child, i) => <MenuItem key={i}>{child}</MenuItem>);
 
   return (
     <nav {...rest}>

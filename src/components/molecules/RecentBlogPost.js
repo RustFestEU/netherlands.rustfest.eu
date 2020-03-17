@@ -27,7 +27,10 @@ export default function RecentBlogPost() {
     .join(' ');
 
   // Print only the first 80 words of the story.
-  let snippet = post.contentSnippet.split(' ').slice(0, 70).join(' ');
+  let snippet = post.contentSnippet
+    .split(' ')
+    .slice(0, 70)
+    .join(' ');
   // If there's more to the story, add a link.
   if (snippet.length < post.contentSnippet.length) {
     snippet += '...';

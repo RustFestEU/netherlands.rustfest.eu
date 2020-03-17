@@ -69,8 +69,7 @@ const IndexPage = ({ data }) => (
         height={'100%'}
       />
       <SplashTitle>{'RustFest.eu Netherlands'}</SplashTitle>
-      <City>Utrecht & Online</City>{' '}
-      <Date>Q4 2020</Date>
+      <City>Utrecht & Online</City> <Date>Q4 2020</Date>
     </Hero>
     <Container>
       <h2>Latest news</h2>
