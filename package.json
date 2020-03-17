@@ -32,7 +32,9 @@
     "tailwindcss": "^1.1.4"
   },
   "scripts": {
+    "prebuild": "yarn clean",
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d public",
     "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
