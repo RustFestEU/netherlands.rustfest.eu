@@ -24,6 +24,12 @@ export default function Footer() {
         >
           Past Events
         </a>
+        <a
+          href={'/imprint'}
+          title={'Imprint'}
+        >
+          Imprint
+        </a>
       </FlexContainer>
     </FooterWrapper>
   );
