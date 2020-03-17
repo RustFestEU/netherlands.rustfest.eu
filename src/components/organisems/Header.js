@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuCallToAction, MenuLink } from '../molecules/Menu';
+import { Menu, MenuLink } from '../molecules/Menu';
 import Logo from '../atoms/Logo';
 import HeaderTitle from '../atoms/HeaderTitle';
 import { Link } from 'gatsby';
@@ -30,9 +30,6 @@ const Header = ({ siteTitle, titleAs = 'div', ...rest }) => {
   return (
     <Menu logo={TitleAndLogo} {...rest}>
       <MenuLink to="/about">About</MenuLink>
-      <MenuCallToAction as={'a'} href="https://cfp.rustfest.eu">
-        Submit a talk
-      </MenuCallToAction>
     </Menu>
   );
 };

@@ -26,6 +26,21 @@ export default function RecentBlogPost() {
     .slice(0, 4)
     .join(' ');
 
+  // Print only the first 80 words of the story.
+  let snippet = post.contentSnippet.split(' ').slice(0, 70).join(' ');
+  // If there's more to the story, add a link.
+  if (snippet.length < post.contentSnippet.length) {
+    snippet += '...';
+    snippet = (
+      <>
+        {snippet}{' '}
+        <a href={post.link} title={'Read the full post'}>
+          Read more
+        </a>
+      </>
+    );
+  }
+
   return (
     <article>
       <time>{date}</time>
@@ -34,7 +49,7 @@ export default function RecentBlogPost() {
           {post.title}
         </a>
       </h3>
-      <p>{post.contentSnippet}</p>
+      <p>{snippet}</p>
     </article>
   );
 }

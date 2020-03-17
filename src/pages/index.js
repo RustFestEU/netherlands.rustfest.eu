@@ -7,7 +7,6 @@ import SEO from '../components/Seo';
 import Container from '../components/atoms/Container';
 import BgImage from '../components/atoms/BgImage';
 import { breakpoints } from '../components/tokens';
-import CallToAction from '../components/atoms/CallToAction';
 import RecentBlogPost from '../components/molecules/RecentBlogPost';
 import MailChimpSubscriptionForm from '../components/molecules/MailChimpSubscriptionForm';
 import { Twitter as TwitterIcon } from '../components/atoms/icons';
@@ -41,11 +40,6 @@ const City = styled.span`
   margin-block-start: 0.83em;
   margin-block-end: 0.5rem;
 `;
-const Venue = styled.span`
-  display: block;
-  text-align: center;
-  margin-block-end: 0.83em;
-`;
 
 const Date = styled(City)`
   .no-js & {
@@ -75,22 +69,8 @@ const IndexPage = ({ data }) => (
         height={'100%'}
       />
       <SplashTitle>{'RustFest.eu Netherlands'}</SplashTitle>
-      <City>Utrecht</City>{' '}
-      <Venue>
-        University of Utrecht <br /> Educatorium
-      </Venue>{' '}
-      <Date>June 6 - 7</Date>
-      {/*<CallToAction*/}
-      {/*  style={{*/}
-      {/*    fontSize: '1.5rem',*/}
-      {/*    borderRadius: '0',*/}
-      {/*    position: 'absolute',*/}
-      {/*    bottom: 0,*/}
-      {/*  }}*/}
-      {/*  href={'https://ti.to/rustfest/netherlands-2020'}*/}
-      {/*>*/}
-      {/*  <b>Buy Tickets</b>*/}
-      {/*</CallToAction>*/}
+      <City>Utrecht & Online</City>{' '}
+      <Date>Q4 2020</Date>
     </Hero>
     <Container>
       <h2>Latest news</h2>
