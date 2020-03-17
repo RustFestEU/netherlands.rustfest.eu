@@ -72,7 +72,7 @@ export default function About(props) {
       </p>
       <p>
         We care about diversity and accessibility at this conference – please
-        take a look at our <Link to={'/codeofconduct'}>Code of Conduct</Link>{' '}
+        take a look at our <Link to={'/code-of-conduct'}>Code of Conduct</Link>{' '}
         and <Link to={'/accessibility'}>Accessibility Statement</Link>.
       </p>
       <h2>Team</h2>
