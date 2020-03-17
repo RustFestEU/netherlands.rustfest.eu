@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Container from '../atoms/Container';
 
@@ -18,18 +19,18 @@ export default function Footer() {
     <FooterWrapper>
       <FlexContainer>
         <span>© Copyright Stichting Rust Nederland</span>
-        <a
-          href={'https://blog.rustfest.eu/past_events/'}
-          title={'View past events'}
-        >
-          Past Events
-        </a>
-        <a
-          href={'/imprint'}
-          title={'Imprint'}
-        >
-          Imprint
-        </a>
+        <span>
+          <a
+            href={'https://blog.rustfest.eu/past_events/'}
+            title={'View past events'}
+          >
+            Past Events
+          </a>
+          {' \u00B7 '}
+          <Link to={'/imprint'} title={'Imprint'}>
+            Imprint
+          </Link>
+        </span>
       </FlexContainer>
     </FooterWrapper>
   );
