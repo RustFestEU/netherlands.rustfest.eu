@@ -1,3 +1,5 @@
+![](https://github.com/RustFestEU/netherlands.rustfest.eu/workflows/Build%20and%20Deploy/badge.svg)
+
 # Contributing
 
 If you want to add to this website use git to clone it.
