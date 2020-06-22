@@ -13,13 +13,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - uses: badboy/gha-git-credentials@v1
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
       - run: yarn install
       - uses: actions/cache@v2
         with:
           path: |
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn deploy
+      - run: |
+          git config --global user.email 'github-action@users.noreply.github.com'
+          git config --global user.name 'RustFest Website deploy'
+          git remote set-url origin https://badboy:${{ secrets.GITHUB_TOKEN }}@github.com/${{ GITHUB_REPOSITORY }}
+          yarn deploy
