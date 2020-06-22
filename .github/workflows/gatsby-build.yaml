@@ -17,4 +17,9 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - run: yarn install
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn deploy
