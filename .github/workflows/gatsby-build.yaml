@@ -14,8 +14,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+            !node_modules/gh-pages/.cache
+            node_modules
+          key: v2-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
