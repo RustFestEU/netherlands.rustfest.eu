@@ -13,5 +13,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
+      - uses: badboy/gha-git-credentials@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
       - run: yarn install
       - run: yarn deploy
